@@ -178,6 +178,13 @@ uint64          walkaddr(pagetable_t, uint64);
 int             copyout(pagetable_t, uint64, char *, uint64);
 int             copyin(pagetable_t, char *, uint64, uint64);
 int             copyinstr(pagetable_t, char *, uint64, uint64);
+void            vmprint(pagetable_t);
+pagetable_t     init_kernel_pagetable();
+void            uvmmap(pagetable_t, uint64, uint64, uint64, int);
+void            kvminithart(void);
+void            proc_inithart(pagetable_t); // 将进程的内核页表保存到SATP寄存器
+pte_t *         walk(pagetable_t, uint64, int);
+void            proc_freewalk(pagetable_t);
 
 // plic.c
 void            plicinit(void);
