@@ -185,6 +185,11 @@ void            kvminithart(void);
 void            proc_inithart(pagetable_t); // 将进程的内核页表保存到SATP寄存器
 pte_t *         walk(pagetable_t, uint64, int);
 void            proc_freewalk(pagetable_t);
+void            u2kvmcopy(pagetable_t, pagetable_t, uint64, uint64);
+
+// vmcopyin.c
+int             copyin_new(pagetable_t, char *, uint64, uint64);
+int             copyinstr_new(pagetable_t, char *, uint64, uint64);
 
 // plic.c
 void            plicinit(void);
