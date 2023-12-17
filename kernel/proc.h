@@ -89,6 +89,7 @@ struct proc {
   int interval;
   uint64 handler;
   int ticks;
+  struct trapframe *pretrapframe;
 
   // p->lock must be held when using these:
   enum procstate state;        // Process state
